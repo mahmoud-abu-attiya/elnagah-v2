@@ -1,3 +1,4 @@
+import VRP from "@/components/VRP"
 import Event from '@/components/events'
 
 export const config = {
@@ -5,9 +6,10 @@ export const config = {
 };
 
 export default function Home({ data }) {
-   const { event = {} } = data;
+   const { event = {}, latest_discounts = [] } = data;
    return (
       <main>
+         <VRP data={latest_discounts} />
          <Event data={event} />
       </main>
    );
