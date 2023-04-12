@@ -1,14 +1,14 @@
-import Hero from "@/components/Hero";
+import Event from '@/components/events'
 
 export const config = {
    unstable_runtimeJS: true
 };
 
 export default function Home({ data }) {
-   const { slides = [] } = data;
+   const { event = {} } = data;
    return (
       <main>
-         <Hero data={slides} />
+         <Event data={event} />
       </main>
    );
 }
