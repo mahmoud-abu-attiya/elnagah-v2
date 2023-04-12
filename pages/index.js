@@ -1,7 +1,7 @@
 import Hero from "@/components/Hero";
 
 export const config = {
-   unstable_runtimeJS: false
+   unstable_runtimeJS: true
 };
 
 export default function Home({ data }) {
