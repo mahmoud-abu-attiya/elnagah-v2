@@ -38,7 +38,7 @@ export default function VRPSwiper({ data }) {
           </Link>
         </div>
         <div className="pa-swiper lg:col-span-8">
-          <EmblaCarousel slides={data} options={OPTIONS} />
+          {/* <EmblaCarousel slides={data} options={OPTIONS} /> */}
         </div>
         <div className="flex lg:hidden col-span-12 flex-col gap-8 items-center">
           <div className="flex gap-10 text-gray-400 items-center">
