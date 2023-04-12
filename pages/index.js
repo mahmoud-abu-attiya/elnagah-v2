@@ -1,3 +1,4 @@
+import About from "@/components/About";
 import VRP from "@/components/VRP"
 import Event from '@/components/events'
 
@@ -6,11 +7,12 @@ export const config = {
 };
 
 export default function Home({ data }) {
-   const { event = {}, latest_discounts = [] } = data;
+   const { event = {}, latest_discounts = [],about_wsam_elngah = [], } = data;
    return (
       <main>
          <VRP data={latest_discounts} />
          <Event data={event} />
+         <About data={about_wsam_elngah} />
       </main>
    );
 }
