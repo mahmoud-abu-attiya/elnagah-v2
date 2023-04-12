@@ -2,26 +2,368 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: "bukra";
+  src: local("Times New Roman"), url(../public/fonts/bukraregular.otf);
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@font-face {
+  font-family: "bukrabold";
+  src: local("Times New Roman"), url(../public/fonts/bukrabold.otf);
+  font-display: swap;
+}
+
+:root {
+  --first-clr: #59b5ba;
+  --second-clr: #07162d;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+*,
+.regular {
+  font-family: "bukra";
+}
+
+.container {
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+  font-family: "bukrabold";
+}
+
+*:not(span),
+.bold {
+  font-family: "bukrabold";
+}
+
+.navdropC {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+}
+
+.navdropP:hover>ul {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.navdropP:hover>span i {
+  transform: rotate(180deg);
+}
+
+.navdropP:hover>span {
+  @apply text-primary;
+}
+
+.navdropP:hover>ul li:first-child {
+  @apply border-primary pt-6;
+}
+
+.scrolDown {
+  color: #fff;
+  line-height: 1.5rem;
+  letter-spacing: .07rem;
+  position: absolute;
+  bottom: 6.5rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  left: 10rem;
+}
+
+.scrolDown::after {
+  content: "";
+  position: absolute;
+  width: .2rem;
+  background-color: #fff;
+  border-radius: 2px;
+  display: block;
+  transform: translateY(2rem);
+  will-change: height, top;
+  -webkit-animation: exploreAnimation 2s linear infinite;
+  animation: exploreAnimation 2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes exploreAnimation {
+  0% {
+    height: 0;
+    top: 0;
+  }
+
+  50% {
+    height: 3.5rem;
+    top: 0;
+  }
+
+  100% {
+    height: 0;
+    top: 3.5rem;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.adropP:hover>.adropC {
+  max-height: 700px;
+}
+
+.adropP:hover>span i {
+  transform: rotate(180deg);
+}
+
+.adropC li:first-child {
+  @apply mt-6;
+}
+
+
+
+.swiper-pagination {
+  left: 3rem !important;
+  bottom: 5rem !important;
+  right: auto !important;
+  width: fit-content !important;
+}
+
+@media (max-width: 767px) {
+  .swiper-pagination {
+    display: none;
+  }
+}
+
+.swiper-pagination-bullet {
+  background-color: #fff !important;
+  width: 20px !important;
+  border-radius: 5px !important;
+  transition: all 0.3s ease-in-out !important;
+  height: 3px !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 50px !important;
+}
+
+.heroSwiper .swiper-pagination,
+.pa-swiper .swiper-pagination {
+  display: none;
+}
+
+/* hero animation fade effect */
+.heroSwiper .swiper-slide div.content {
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.heroSwiper .swiper-slide-next div.content {
+  transform: translateX(200px);
+}
+
+.heroSwiper .swiper-slide-prev div.content {
+  transform: translateX(-200px);
+}
+
+.heroSwiper .swiper-slide-active div.content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* hero animation fade effect */
+
+.search:focus-within {
+  @apply border-primary;
+}
+
+.vrp {
+  background-image: url(../public/vision-section-bg.webp);
+  background-position: top left;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card {
+  transition: all 0.5s ease-in-out;
+  background-size: 100%;
+  background-position: center;
+}
+
+.up .flip-card {
+  @apply translate-y-6
+}
+
+.down .flip-card {
+  @apply -translate-y-6
+}
+
+.flip-card h3 {
+  font-size: clamp(17px, 1.5vw, 1.5rem);
+}
+
+.card h3 {
+  font-size: clamp(17px, 2vw, 1rem);
+}
+
+.card {
+  padding-top: calc((3 / 2) * 100%);
+  /* 16:9 aspect ratio */
+}
+
+.card .inner-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to top, #24b4ba 30%, transparent 60%);
+}
+
+.card .img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in-out;
+}
+
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 450px;
+  /* padding-top: calc((3 / 2) * 100%); */
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-back {
+  box-shadow: 0 2rem 3rem rgba(0, 0, 0, .05);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(-180deg);
+}
+
+.flip-card:hover .flip-card-inner .flip-card-front span.absolute {
+  z-index: 0;
+}
+
+.flip-card:hover .flip-card-inner .flip-card-front>div {
+  z-index: 0;
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-front img {
+  z-index: 0;
+}
+
+.flip-card-front span.absolute {
+  z-index: 1;
+}
+
+.flip-card-front>div {
+  z-index: 2;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* .projects {
+  background-image: url(../public/images/projects-bg.webp);
+  background-position: top left;
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
+
+.backtotop:hover>span {
+  @apply bg-white text-primary;
+}
+
+.next-arrow:hover>span,
+.prev-arrow:hover>span {
+  opacity: 1;
+}
+
+
+.card:hover {
+  background-size: 120%;
+}
+
+.contact {
+  background: -webkit-gradient(linear, left bottom, right top, from(#2882c3), to(#1f396c));
+  background: linear-gradient(to top right, #2882c3, #1f396c);
+}
+
+section {
+  overflow: hidden;
+}
+
+@media (max-width: 1280px) {
+
+  /* 1280px LG */
+  .backtotop {
+    position: absolute;
+    bottom: 3rem;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 1280px) and (min-width: 767px) {
+  .pa-swiper {
+    @apply p-4;
+  }
+}
+.spikes {
+  position: relative;
+}
+.spikes::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 30px;
+  z-index: 1;
+  background-image: linear-gradient(135deg, white 25%, transparent 25%),
+    linear-gradient(225deg, white 25%, transparent 25%);
+  background-size: 30px 30px;
 }
